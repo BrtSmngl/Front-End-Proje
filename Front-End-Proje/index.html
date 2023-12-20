@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Ticaret Sitesi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header>
+      <img class="neos-logo" src="logo.png" alt="">
+  </header>
+
+  <nav>
+    <a href="#" onclick="showPage('home')">Ana Sayfa</a>
+    <a href="#" onclick="showPage('login')">Giriş/Kayıt</a>
+    <a href="#" onclick="showPage('categories')">Kategoriler</a>
+    <a href="#" onclick="showPage('cart')">Sepet</a>
+  </nav>
+
+  <section id="home">
+    <div class="slider">  
+     <div class="kodlayiruk-slider">
+         <div class="slide fade">
+             <div class="number">1 / 3</div>
+             <img src="./slides/60082-web-b22288.jpg" class="slide-image" />
+             <div class="text">İlk Görsel</div>
+         </div>
+  
+         <div class="slide fade">
+             <div class="number">1 / 3</div>
+             <img src="./slides/58906-web-24e423.jpg" class="slide-image" />
+             <div class="text">İkinci Görsel</div>
+         </div>
+
+         <a class="prev" onclick="slideRoute(-1)">&#10094;</a>
+         <a class="next" onclick="slideRoute(1)">&#10095;</a>
+     </div>
+     <br/>
+     
+     <div style="text-align:center">
+         <span class="dot" onclick="currentSlide(1)"></span>
+         <span class="dot" onclick="currentSlide(2)"></span>
+         <span class="dot" onclick="currentSlide(3)"></span>
+     </div>
+     </div>
+  </section>
+
+  <section id="login" style="display:none;">
+    <h2 class="basliklar">Giriş/Kayıt</h2>
+    <div id="loginForm">
+      <form onsubmit="event.preventDefault(); login(document.getElementById('email').value, document.getElementById('password').value);">
+        <input type="email" id="email" placeholder="E-mail">
+        <input type="password" id="password" placeholder="Şifre">
+        <input type="submit" value="Giriş yap">
+      </form>
+      <div class="yada">
+        <div class="cizgi"></div>
+        <p>YA DA</p>
+        <div class="cizgi"></div>
+      </div>
+      <a href="#" class="forget" onclick="showRegisterPage()">Kayıt Ol</a>
+    </div>
+    <div id="userInfo" style="display:none;">
+    </div>
+  </section>
+
+  <section id="register" style="display:none;">
+    <h2>Kayıt Ol</h2>
+    <div id="registerForm">
+      <form onsubmit="event.preventDefault(); register(
+        document.getElementById('registerFirstName').value,
+        document.getElementById('registerLastName').value,
+        document.getElementById('registerPhoneNumber').value,
+        document.getElementById('registerEmail').value,
+        document.getElementById('registerPassword').value
+      );">
+        <input type="text" id="registerFirstName" placeholder="Ad">
+        <input type="text" id="registerLastName" placeholder="Soyad">
+        <input type="tel" id="registerPhoneNumber" placeholder="Telefon Numarası">
+        <input type="email" id="registerEmail" placeholder="E-mail">
+        <input type="password" id="registerPassword" placeholder="Şifre">
+        <input type="submit" value="Kayıt Ol">
+      </form>
+    </div>
+  </section>
+
+  <section id="categories" style="display:none;">
+    <h2 class="basliklar">Kategoriler</h2>
+    <div class="category" onclick="showProducts('category1')">Atıştırmalık</div>
+    <div class="category" onclick="showProducts('category2')">İçecek</div>
+    <div class="category" onclick="showProducts('category3')">Sebze/Meyve</div>
+  </section>
+
+  <section id="products" style="display:none;">
+    <h2>Ürünler</h2>
+    <div id="productList"></div>
+  </section>
+
+
+<section id="cart">
+  <h2 class="spt">Sepet</h2>
+  <ul id="cartItems" class="cart-items"></ul>
+  <p class="total">Toplam: <span id="totalPrice">0</span> TL</p>
+  <button class="checkout-button" onclick="checkout()">Satın Al</button>
+</section>
+
+
+  <footer>
+    &copy; 2023 E-Ticaret Sitesi
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
